@@ -141,7 +141,7 @@
 														</span>
 													</div>
 													<input type="hidden" class="form-control" name="hotel" id="f_id_produk">
-													<input type="search" name="q" id="autocomplete1" class="form-control" placeholder="Kota, Hotel, Tempat tujuan">
+													<input type="search" name="q" id="autocomplete1" class="form-control input-search" placeholder="Kota, Hotel, Tempat tujuan">
 												</div>
 											</div>
 
@@ -153,7 +153,7 @@
 															<i class="fa fa-calendar"></i>
 														</span>
 													</div>
-													<input type="text" id="datecheckin" name="ci" class="form-control" placeholder="Date from" data-provide="datepicker" value="<?=date("Y-m-d")?>">
+													<input type="text" id="datecheckin" name="ci" class="form-control input-search" placeholder="Date from" data-provide="datepicker" value="<?=date("Y-m-d")?>">
 												</div>
 											</div>
 
@@ -165,7 +165,7 @@
 															<i class="fa fa-calendar"></i>
 														</span>
 													</div>
-													<input type="text" id="datecheckout" name="co" class="form-control" placeholder="Date to" data-provide="datepicker" value="<?=date("Y-m-d", strtotime("+ 1 day"))?>">
+													<input type="text" id="datecheckout" name="co" class="form-control input-search" placeholder="Date to" data-provide="datepicker" value="<?=date("Y-m-d", strtotime("+ 1 day"))?>">
 												</div>
 											</div>
 
@@ -177,7 +177,7 @@
 															<i class="fa fa-user"></i>
 														</span>
 													</div>
-													<input type="number" name="g" value="1" class="form-control" min="1">
+													<input type="number" name="g" value="1" class="form-control input-search" min="1">
 												  	<div class="input-group-append">
 												    	<span class="input-group-text">Orang</span>
 												  	</div>
@@ -192,7 +192,7 @@
 															<i class="fa fa-bed"></i>
 														</span>
 													</div>
-													<input type="number" name="cr" value="1" class="form-control" min="1">
+													<input type="number" name="cr" value="1" class="form-control input-search" min="1">
 													<div class="input-group-append">
 												    	<span class="input-group-text">Kamar</span>
 												  	</div>

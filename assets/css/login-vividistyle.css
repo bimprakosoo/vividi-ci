@@ -20,7 +20,7 @@ body {
 	background-color: #074175 !important; border-color: #074175 !important; width: 200px; float: left;
 }
 .modal-login{
-	width:500px;min-height: 430px; margin-bottom: 10px; padding: 5px 10px;
+	width:500px;min-height: 500px; margin-bottom: 10px; padding: 5px 10px;
 }
 .txt-daftar{
 	float: right !important; font-size: 16px; padding-top: 5px;

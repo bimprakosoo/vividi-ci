@@ -75,7 +75,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Search" class="btn btn-primary btn-cari py-3 px-5">
+					<input type="submit" value="Search" class="btn btn-primary btn-cari-side py-3 px-5">
 				</div>
 			</div>
 		</form>

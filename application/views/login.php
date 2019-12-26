@@ -70,7 +70,7 @@ if (isset($_SESSION['username'])) {
 			</div>
 			<p class="txt-companies-bot">
 				&copy; <?=date("Y")?> PT. VIVIDI TRANSINDO UTAMA
-				<span>Ver 1.9.01 </span>
+				<span>Ver 1.9.10 </span>
 			</p>
 		</div>
 	</div>

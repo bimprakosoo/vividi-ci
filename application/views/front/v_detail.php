@@ -46,6 +46,7 @@
 						todayBtn: true,
 						autoclose: true
 					});
+					$('#exampleModal').appendTo("body");
 				});
 			</script>
 			<div class="fields">
@@ -75,7 +76,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Search" class="btn btn-primary btn-cari py-3 px-5">
+					<input type="submit" value="Search" class="btn btn-primary btn-cari-side py-3 px-5">
 				</div>
 			</div>
 		</form>
@@ -129,10 +130,10 @@
 			<p class="rate mb-5">
 				<span class="star">
 					<?php
-						for ($i = 1; $i <= $hotel["f_rate_properti"]; $i++) { ?>
+					for ($i = 1; $i <= $hotel["f_rate_properti"]; $i++) { ?>
 						<i class="icon-star"></i>
 					<?php }
-						?>
+					?>
 				</span> &nbsp;
 				<span class="loc"><a href="#"><i class="icon-map"></i><?= $hotel["f_alamat_properti"] ?></a></span>
 			</p>
@@ -158,10 +159,10 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="txt-companies">
-						Vividi
+						Ulasan Pengguna
 					</div>
 					<div class="total-rates" style="font-size:18px; font-weight:300;">
-						<i class="fa fa-certificate"></i>&nbsp;&nbsp;7.6 Good Service
+						<i class="fa fa-certificate"></i>&nbsp;&nbsp;7.6 Bagus
 					</div>
 					<div class="people-rates">
 						berdasarkan ulasan 800 orang
@@ -178,7 +179,7 @@
 		<div class="list-group list-detail-room ftco-animate" id="myList" role="tablist" style="flex-direction: row !important;">
 			<a class="list-group-item list-group-item-action box-icon" data-toggle="list" href="#desk" role="tab">
 				<i class="fa fa-info-circle icon-room-vividi"></i>&nbsp;
-				<span class="text-icon-tab">Informasi Umum</span>
+				<span class="text-icon-tab">Informasi Hotel</span>
 			</a>
 			<a class="list-group-item list-group-item-action box-icon active" data-toggle="list" href="#room" role="tab">
 				<i class="fa fa-map icon-room-vividi"></i>&nbsp;
@@ -186,11 +187,11 @@
 			</a>
 			<a class="list-group-item list-group-item-action box-icon" data-toggle="list" href="#facility" role="tab">
 				<i class="fa fa-check-square icon-room-vividi"></i>&nbsp;
-				<span class="text-icon-tab">Fasilitas</span>
+				<span class="text-icon-tab">Fasilitas Hotel</span>
 			</a>
 			<a class="list-group-item list-group-item-action box-icon" data-toggle="list" href="#rates" role="tab">
 				<i class="fa fa-pencil-square-o icon-room-vividi"></i>&nbsp;
-				<span class="text-icon-tab">Ulasan</span>
+				<span class="text-icon-tab">Tulis Ulasan Hotel</span>
 			</a>
 		</div>
 
@@ -215,65 +216,73 @@
 								</a>
 							</div>
 							<div class="col-md-8">
-								<a href="#">
-									<div class="box-product-pad">
-										<div class="row box-product-title">
-											<div class="col-md-8">
-												<h3 class="txt-product">
-													<a href="#"><?= $data['f_nama_kamar'] ?></a>
-												</h3>
-												<div class="ket-room">
-													<i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Maks. <?= $data['f_max_adult'] ?> Orang
-													<br>
-													<i class="fa fa-cutlery"></i>&nbsp;&nbsp;Termasuk Sarapan
-													<br>
-													<i class="fa fa-wifi"></i> Termasuk Koneksi Wifi Gratis
-													<br>
-													<i class="fa  fa-check-square"></i> Refundable
-												</div>
-												<div class="detail-pop-room">
-													<button type="button" class="" data-toggle="modal" data-target="#exampleModal">
-														Detail room
-													</button>
-												</div>
+								<div class="box-product-pad">
+									<div class="row box-product-title">
+										<div class="col-md-8">
+											<h3 class="txt-product">
+												<?= $data['f_nama_kamar'] ?>
+											</h3>
+											<div class="ket-room">
+												<i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Maks. <?= $data['f_max_adult'] ?> Orang
+												<br>
+												<i class="fa fa-cutlery"></i>&nbsp;&nbsp;Termasuk Sarapan
+												<br>
+												<i class="fa fa-wifi"></i> Termasuk Koneksi Wifi Gratis
+												<br>
+												<i class="fa  fa-check-square"></i> Refundable
 											</div>
-											<div class="col-md-4" style="">
-												<div class="box-price">
-													<div class="normal-price">
-														<span class="txt-diskon">5%</span>
-														<span class="txt-diskon-harga">Rp <?= number_format($data['f_harga_akhir']) ?></span>
-													</div>
-													<div class="diskon-price">
-														Rp <?= number_format($data['f_harga_akhir']) ?>
-													</div>
-													<div class="night" style="font-size: 13px;">
-														per malam
-													</div>
-													<div class="" style="margin-top:15px;">
-														<a href="#room" class="btn btn-primary btn-cari btn-room">Pesan sekarang</a>
-													</div>
+											<div class="detail-pop-room">
+												<a class="btn btn-detail-room" data-toggle="modal" data-target="#exampleModal">
+													Detail Kamar
+												</a>
+											</div>
+										</div>
+										<div class="col-md-4" style="">
+											<div class="box-price">
+												<div class="normal-price">
+													<span class="txt-diskon">5%</span>
+													<span class="txt-diskon-harga">Rp <?= number_format($data['f_harga_akhir']) ?></span>
+												</div>
+												<div class="diskon-price">
+													Rp <?= number_format($data['f_harga_akhir']) ?>
+												</div>
+												<div class="night" style="font-size: 13px;">
+													per malam per kamar
+												</div>
+												<div class="" style="margin-top:15px;">
+													<form action="<?=base_url("Front/Confirpayment")?>" action="post">
+														<input type="text" value="<?=$this->session->userdata('f_kode')?>">
+														<input type="hidden" value="<?=$data['f_kode_kamar']?>">
+														<input type="hidden" value="<?=$_GET['ci']?>">
+														<input type="hidden" value="<?=$_GET['co']?>">
+														<input type="hidden" value="<?=$_GET['g']?>">
+														<input type="hidden" value="<?=$_GET['cr']?>">
+														<a type="submit" class="btn btn-primary btn-room">Pesan sekarang</a>
+													</form>
 												</div>
 											</div>
 										</div>
 									</div>
-								</a>
-								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												...
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-											</div>
-										</div>
-									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-centre" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+								...
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save changes</button>
 								</div>
 							</div>
 						</div>
