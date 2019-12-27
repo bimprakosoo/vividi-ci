@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/vividi-dev/mitra/';
+$config['base_url'] = 'http://localhost/vividi-ci/';
 // $config['base_url'] = 'http://vividi.id/stagging/mitra/';
 
 /*
