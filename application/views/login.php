@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
 			<div class="modal-content modal-login">
 				<div class="modal-header">
 					<div class="logo">
-						<a href="<?=base_url("login")?>"><img src="<?php echo base_url('assets/new-logo.png'); ?>" class="img-fluid img-logo"></a>
+						<a href="<?=base_url("Front")?>"><img src="<?php echo base_url('assets/new-logo.png'); ?>" class="img-fluid img-logo"></a>
 						<p class="text-companies">
 							MITRA <span>DASHBOARD</span>
 						</p>
@@ -47,6 +47,9 @@ if (isset($_SESSION['username'])) {
 				<?php } ?>
 				<?php if(@$_GET["status"]=="login_failed"){?>
 					<div class="alert alert-danger" id="alert-suc"><strong>Failed!</strong> Username/Email atau Password anda Salah.<br> Silahkan Coba Lagi.</div>
+				<?php } ?>
+				<?php if(@$_GET["status"]=="login_first"){?>
+					<div class="alert alert-warning" id="alert-suc"><strong>Failed!</strong> Anda harus login terlebih dahulu untuk melakukan proses booking!</div>
 				<?php } ?>
 				<?php echo form_open(base_url('login/ceklogin')); ?>
 					<div class="form-group">

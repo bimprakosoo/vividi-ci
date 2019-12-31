@@ -250,15 +250,7 @@
 													per malam per kamar
 												</div>
 												<div class="" style="margin-top:15px;">
-													<form action="<?=base_url("Front/Confirpayment")?>" action="post">
-														<input type="text" value="<?=$this->session->userdata('f_kode')?>">
-														<input type="hidden" value="<?=$data['f_kode_kamar']?>">
-														<input type="hidden" value="<?=$_GET['ci']?>">
-														<input type="hidden" value="<?=$_GET['co']?>">
-														<input type="hidden" value="<?=$_GET['g']?>">
-														<input type="hidden" value="<?=$_GET['cr']?>">
-														<a type="submit" class="btn btn-primary btn-room">Pesan sekarang</a>
-													</form>
+													<a href="<?=base_url("Front/confirpayment/$data[f_kode_kamar]?ci=$_GET[ci]&co=$_GET[co]&g=$_GET[g]&cr=$_GET[cr]")?>" class="btn btn-primary btn-room">Pesan sekarang</a>
 												</div>
 											</div>
 										</div>

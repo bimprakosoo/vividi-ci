@@ -1,3 +1,168 @@
+<div class="bg-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-xs-12 pad-greeting1 ftco-animate">
+				<h1 class="mb-4 txt-greeting">
+					<strong>Explore <br></strong> your amazing city.
+				</h1>
+				<p class="short-greeting">Find great places to stay, eat, shop, or visit from local experts</p>
+			</div>
+			<div class="col-md-6 col-xs-12 pad-greeting ftco-animate">
+				<div class="" style="background:#074175a6;">
+					<script type="text/javascript">
+						var site = "<?php echo site_url();?>";
+						$(function() {
+							$("#autocomplete1").autocomplete({
+								// serviceUrl berisi URL ke controller/fungsi yang menangani request kita
+								serviceUrl: site+"/front/json_search",
+
+								formatResult: function(suggestion, currentValue){
+									return suggestion.label;
+								},
+
+								// fungsi ini akan dijalankan ketika user memilih salah satu hasil request
+								onSelect: function (suggestion) {
+									$("#autocomplete1").val(""+suggestion.nama); // membuat id "v_jurusan" untuk ditampilkan
+									$("#f_id_produk").val(""+suggestion.kode); // membuat id "v_jurusan" untuk ditampilkan
+								}
+							});
+							$('#myList a').on('click', function (e) {
+								e.preventDefault()
+								$(this).tab('show');
+							});
+
+							var date = new Date();
+							$("#datecheckin").datepicker({
+								format: "yyyy-mm-dd",
+								todayBtn: true,
+								autoclose: true,
+								startDate: new Date()
+							})
+							.on("changeDate", function(e) {
+								var checkInDate = e.date, $checkOut = $("#datecheckout");
+								checkInDate.setDate(checkInDate.getDate() + 1);
+								$checkOut.datepicker("setStartDate", checkInDate);
+								$checkOut.datepicker("setDate", checkInDate).focus();
+							});
+
+							$("#datecheckout").datepicker({
+
+								format: "yyyy-mm-dd",
+								todayBtn: true,
+								autoclose: true,
+								startDate: "<?=date("Y-m-d",strtotime("+ 1 day"));?>"
+
+							});
+						});
+					</script>
+
+					<div class="list-group list-searching" id="myList" role="tablist" style="flex-direction: row !important;">
+						<a class="list-group-item list-group-item-action box-icon active" data-toggle="list" href="#hotel" role="tab">
+							<i class="fa fa-hotel icon-vividi"></i>&nbsp; 
+							<span class="text-icon-tab">Hotel</span>
+						</a>
+						<a class="list-group-item list-group-item-action box-icon" data-toggle="list" href="#tour" role="tab">
+							<i class="fa fa-map icon-vividi"></i>&nbsp; 
+							<span class="text-icon-tab">Tour Package</span>
+						</a>
+						<a class="list-group-item list-group-item-action box-icon" data-toggle="list" href="#rental" role="tab">
+							<i class="fa fa-car icon-vividi"></i>&nbsp; 
+							<span class="text-icon-tab">Car Rentals</span>
+						</a>
+					</div>
+
+					<!-- Tab panes -->
+					<div class="tab-content tab-pad">
+						<div class="tab-pane active" id="hotel" role="tabpanel">
+							<form action="<?=base_url("front/search")?>" method="get" class="d-block d-flex">
+								<div class="block-17 my-4 no-background">
+									<div class="row form-cari">
+										<div class="col-md-12 textfield-search form-search">
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">
+														<i class="fa fa-map-pin"></i>
+													</span>
+												</div>
+												<input type="search" name="q" id="autocomplete1" class="form-control input-search" placeholder="Kota, Hotel, Tempat tujuan">
+											</div>
+										</div>
+
+										<div class="col-md-6 col-xs-12">
+											<label style="color:#fff;">Check In </label>
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">
+														<i class="fa fa-calendar"></i>
+													</span>
+												</div>
+												<input type="text" id="datecheckin" name="ci" class="form-control input-search" placeholder="Date from" data-provide="datepicker" value="<?=date("Y-m-d")?>">
+											</div>
+										</div>
+
+										<div class="col-md-6 col-xs-12 space-small">
+											<label style="color:#fff;">Check Out </label>
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">
+														<i class="fa fa-calendar"></i>
+													</span>
+												</div>
+												<input type="text" id="datecheckout" name="co" class="form-control input-search" placeholder="Date to" data-provide="datepicker" value="<?=date("Y-m-d", strtotime("+ 1 day"))?>">
+											</div>
+										</div>
+
+										<div class="col-md-6 col-xs-12">
+											<label style="color:#fff;">Jumlah Tamu</label>
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">
+														<i class="fa fa-user"></i>
+													</span>
+												</div>
+												<input type="number" name="g" value="1" class="form-control input-search" min="1">
+												<div class="input-group-append">
+													<span class="input-group-text">Orang</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-xs-12 space-med">
+											<label style="color:#fff;">Jumlah Kamar</label>
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">
+														<i class="fa fa-bed"></i>
+													</span>
+												</div>
+												<input type="number" name="cr" value="1" class="form-control input-search" min="1">
+												<div class="input-group-append">
+													<span class="input-group-text">Kamar</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-12">
+											<input type="submit" class="search-submit btn btn-primary btn-cari form-control" value="Search">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						
+						<div class="tab-pane" id="tour" role="tabpanel">
+							
+						</div>
+						<div class="tab-pane" id="rental" role="tabpanel">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <section class="ftco-section services-section bg-light">
 	<div class="container">
 		<div class="row d-flex">

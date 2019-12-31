@@ -7,26 +7,19 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Model_properti');
-        $this->load->model('Model_pesan');
-        $this->load->model('Model_register');
-		$this->load->model('Model_profil');
-        $this->load->database();
-		if ($_SESSION['ID'] == null){
-			redirect(base_url('Login'));
-		}
     }
 
     public function index()
     {
-        $id = $_SESSION['ID'];
-		$data['data'] = $this->Model_pesan->data_pesan_menunggu_mitra($id);
-		$data['data_batal'] = $this->Model_pesan->data_pesan_batal_mitra($id);
-		$data['data_sukses'] = $this->Model_pesan->data_pesan_sukses_mitra($id);
-		$data['data_semua'] = $this->Model_pesan->data_pesan_mitra($id);
-        $data['folder'] = "dashboard";
-        $data['side'] = "dashboard";
-        $this->load->view('index', $data);
+        $data["active_menu"] = "home";
+        $data['page_heading'] = 'Dashboard';
+
+        $id = $this->session->userdata('f_kode');
+        $data['all_book'] = $this->Model_pesan->data_pesan()->result_array();
+        $data['ccl_book'] = $this->Model_pesan->data_pesan_batal()->result_array();
+        $data['dly_book'] = $this->Model_pesan->data_pesan_menunggu()->result_array();
+        $data['suc_book'] = $this->Model_pesan->data_pesan_sukses()->result_array();
+        $this->theme->panel('index',$data);
     }
 
     public function edit_profile()
@@ -67,5 +60,10 @@ class Home extends CI_Controller
 		$data['folder'] = "profile";
 		$data['side'] = "daftar";
 		$this->load->view('index', $data);
-	}
+    }
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('login', 'refresh');
+    }
 }

@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="<?=base_url('Admin/Home')?>" class="logo">
+    <a href="<?=base_url('Front')?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>V</b>ID</span>
         <!-- logo for regular state and mobile devices -->

@@ -1,9 +1,7 @@
 <?php
 
-class Model_properti extends CI_Model
-{
-    function data_semua_properti()
-    {
+class Model_properti extends CI_Model{
+    function data_semua_properti(){
         $query = $this->db->query("select posts.ID as id, posts.post_title as Judul,
 			 t.name AS Tipe_Properti,
 			 (select t.name from wpwj_terms t left join wpwj_postmeta pm on t.term_id = pm.meta_value where pm.meta_value = pmkota.meta_value group by posts.ID) as Kota,
@@ -80,7 +78,17 @@ class Model_properti extends CI_Model
 			group by p.id");
 		return $query->result();
 	}
-
+    function detail_properti($id){
+		 return $this->db->select("p.f_kode_properti, p.f_nama_properti, p.f_alamat_properti, p.f_rate_properti, 
+								   p.f_alamat_properti, p.f_desc_properti, p.f_short_desc_properti, k.f_kode_kamar, k.f_nama_kamar, k.f_max_adult, k.f_desc_kamar, h.f_harga_awal, h.f_harga_akhir,
+								   kt.f_nama_kota,pr.f_nama_provinsi")
+			 			 ->join("tb_kamar k","k.f_kode_properti=p.f_kode_properti","left")
+			 			 ->join("tb_harga h","h.f_kode_kamar=k.f_kode_kamar","left")
+			 			 ->join("tb_kota kt","kt.f_id_kota=p.f_kota_properti","left")
+			 			 ->join("tb_provinsi pr","pr.f_id_provinsi=p.f_provinsi_properti","left")
+						 ->where("k.f_kode_kamar",$id)
+						 ->get("tb_properti p");
+	}
     function combo_tipe_properti()
     {
         $query = $this->db->query("select t.term_id as id_tipe, t.name as tipe
